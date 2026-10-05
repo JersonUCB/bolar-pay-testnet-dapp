@@ -1,0 +1,8 @@
+{
+  "compilerOptions": {
+    "target": "ES2022", "module": "commonjs", "moduleResolution": "node",
+    "outDir": ".test-build", "strict": true, "skipLibCheck": true,
+    "esModuleInterop": true
+  },
+  "include": ["domain/**/*.ts", "application/**/*.ts", "lib/remittance-quote.ts"]
+}

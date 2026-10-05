@@ -1,0 +1,99 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f9fcfa;
+  --foreground: #011e24;
+  color-scheme: light;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-inter);
+  --font-footer: var(--font-open-sans);
+  --color-bolar-green: #004d1a;
+  --color-bolar-dark: #000c06;
+  --color-content-secondary: #475659;
+  --color-content-tertiary: #95a3a6;
+  --color-field: #edf2ef;
+  --color-card-border: #f3f6f5;
+  --color-footer-green: #44b86d;
+  --color-footer-ink: #222d3d;
+  --shadow-quote: 0 8px 18px rgb(0 0 0 / 6%);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-inter), Arial, Helvetica, sans-serif;
+}
+
+@layer base {
+  button, select, summary { cursor: pointer; }
+  :focus-visible { outline: 2px solid var(--color-bolar-green); outline-offset: 4px; }
+}
+
+@layer components {
+  .nav-link { @apply flex items-center justify-center rounded-lg px-4 py-[14px] text-base font-medium leading-5 transition-colors hover:bg-field; }
+  .primary-button { @apply rounded-lg bg-bolar-green px-5 py-4 text-center text-lg font-medium leading-6 text-field transition-colors hover:bg-bolar-dark; }
+  .bolar-dialog { @apply fixed inset-0 m-auto max-h-[calc(100dvh-32px)] w-[calc(100%-32px)] max-w-[460px] overflow-y-auto rounded-2xl border border-field bg-white p-6 font-sans text-foreground shadow-xl; }
+  .bolar-dialog::backdrop { background: rgb(0 12 6 / 45%); }
+}
+
+@utility trim-cap {
+  text-box-trim: trim-both;
+  text-box-edge: cap alphabetic;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+}
+
+/* Remittance steps share the landing's tokens and fit small viewports. */
+.remittance-dialog {
+  position: fixed;
+  inset: 0;
+  margin: auto;
+  width: calc(100% - 32px);
+  max-width: 560px;
+  max-height: calc(100dvh - 32px);
+  overflow-y: auto;
+  border: 1px solid var(--color-card-border);
+  border-radius: 12px;
+  padding: 44px 40px 24px;
+  background: white;
+  color: var(--foreground);
+  box-shadow: var(--shadow-quote);
+}
+.remittance-dialog::backdrop { background: rgb(1 30 36 / 30%); }
+.remittance-stepper { display: flex; width: 100%; }
+.remittance-stepper li { position: relative; flex: 1; }
+.remittance-stepper li:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 17px;
+  left: calc(50% + 18px);
+  width: calc(100% - 36px);
+  height: 2px;
+  background: var(--color-field);
+}
+.remittance-stepper li.is-complete::after { background: var(--color-bolar-green); }
+.remittance-step-label { display: flex; width: 100%; flex-direction: column; align-items: center; gap: 8px; text-align: center; font-size: 14px; line-height: 20px; }
+.remittance-step-dot { display: flex; width: 36px; height: 36px; align-items: center; justify-content: center; border-radius: 50%; background: var(--color-field); color: var(--foreground); font-size: 16px; }
+.remittance-step-dot.is-active { background: var(--color-bolar-green); color: white; }
+.remittance-field { width: 100%; min-height: 48px; border-radius: 6px; padding: 12px 16px; background: var(--color-field); color: var(--foreground); font-size: 16px; font-weight: 400; }
+.remittance-field::placeholder { color: var(--color-content-tertiary); }
+.remittance-field:disabled { opacity: .6; }
+@media (max-width: 440px) {
+  .remittance-dialog { padding: 40px 20px 24px; }
+  .remittance-step-label { font-size: 11px; line-height: 16px; }
+}
+
+:root { --font-inter: Inter; --font-open-sans: "Open Sans"; }
+.lab-banner { display:flex; justify-content:center; flex-wrap:wrap; gap:8px 20px; padding:10px 16px; background:#004d1a; color:white; text-align:center; font-size:12px; }
+.lab-banner strong { letter-spacing:.08em; }
+.lab-note { border:1px solid #cde6d4; border-radius:10px; padding:12px 16px; background:#edf6ef; font-size:14px; line-height:1.6; }
+.lab-secondary { border:1px solid #cddbd2; border-radius:8px; padding:10px 14px; font-size:14px; }
+.demo-deposit { display:flex; flex-direction:column; align-items:center; gap:8px; border:2px dashed #004d1a; border-radius:12px; padding:24px; text-align:center; }
+.demo-deposit>span { font-size:60px; line-height:1; }
+button:disabled { cursor:wait; opacity:.6; }

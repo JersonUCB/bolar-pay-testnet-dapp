@@ -1,0 +1,11 @@
+node_modules/
+.next/
+.test-build/
+target/
+.local/
+.env*
+!.env.example
+*.tsbuildinfo
+.DS_Store
+test_snapshots/
+artifacts/

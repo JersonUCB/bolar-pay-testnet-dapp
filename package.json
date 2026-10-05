@@ -1,0 +1,16 @@
+{
+  "name": "bolar-pay-testnet-dapp",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "npm --prefix apps/web run dev",
+    "build": "npm --prefix apps/web run build",
+    "lint": "npm --prefix apps/web run lint",
+    "typecheck": "npm --prefix apps/web run typecheck",
+    "test": "npm --prefix apps/web test",
+    "test:contracts": "cargo test --workspace --locked",
+    "build:contracts": "stellar contract build --manifest-path Cargo.toml --package remittance --locked",
+    "testnet:setup": "node scripts/setup-testnet.mjs",
+    "check": "npm run lint && npm run typecheck && npm test && npm run test:contracts && npm run build"
+  }
+}
