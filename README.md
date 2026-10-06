@@ -23,7 +23,7 @@ npm run dev
 
 Abre <http://127.0.0.1:3100>. Pulsa **Entrar al laboratorio**, introduce entre 1 y 1.000 BRL ficticios y pulsa **Probar envío**. No necesitas `.env`, Google, CPF ni una cuenta bancaria.
 
-En la máquina donde se creó este proyecto ya se copiaron las dependencias instaladas del BOLAR original. La instalación limpia con `npm ci` queda por comprobar en un entorno con acceso a npm; el lockfile está incluido.
+La instalación limpia con `npm ci --prefix apps/web` fue verificada el 6 de octubre de 2026, después de sincronizar el lockfile con las dependencias declaradas.
 
 ## Ejecutar el tramo blockchain
 
@@ -61,10 +61,11 @@ docs/                      Decisiones, etapas, prompts y verificación
 4. [Pruebas manuales y automatizadas](docs/04-pruebas.md).
 5. [Pollar, Bridge y alcance del piloto](docs/05-proveedores.md).
 6. [Referencias y procedencia](docs/REFERENCIAS.md).
+7. [Guía práctica, evidencia testnet y comparación con el repositorio original](docs/07-guia-practica-y-comparacion.md).
 
-## Verificación inicial
+## Verificación del 6 de octubre de 2026
 
-Pasaron lint, TypeScript, 10 pruebas web/servidor, 6 pruebas Rust, build de Next.js y compilación WASM. La ejecución visual en navegador y el despliegue público testnet **no se verificaron**: el entorno de ejecución bloqueó la apertura del puerto (`EPERM`) y la resolución de red de la terminal. Compilar no demuestra una transacción en red.
+Pasaron lint, TypeScript, 12 pruebas web/servidor, 6 pruebas Rust, build de Next.js y compilación WASM. Se revisaron los recorridos de simulación en navegador, el cierre con teclado y vistas de escritorio/móvil. Se desplegó el contrato y se confirmó una transferencia de 1 XLM de prueba en la testnet pública, con recibo y saldos verificados. El duplicado se rechazó en simulación RPC sin enviar otra transacción. La [guía práctica](docs/07-guia-practica-y-comparacion.md) incluye la evidencia y sus límites. Pollar, Bridge y la entrega bancaria siguen pendientes.
 
 ```sh
 npm run check

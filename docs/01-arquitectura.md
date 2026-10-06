@@ -49,4 +49,4 @@ Esta solución es adecuada para una demo local de un desarrollador. Para varias 
 
 ## Diseño conservado
 
-Se reutilizaron componentes, CSS y recursos de la landing original, incluyendo sus colores e ilustración. Cambiamos el acceso por una entrada a datos ficticios y añadimos una franja visible de laboratorio. Quitamos del pie las referencias ajenas a BOLAR que venían en la plantilla. El diseño queda pendiente de revisión visual en navegador; no afirmamos equivalencia píxel a píxel.
+Se reutilizaron componentes, CSS y recursos de la landing original, incluyendo sus colores e ilustración. Cambiamos el acceso por una entrada a datos ficticios y añadimos una franja visible de laboratorio. Quitamos del pie las referencias ajenas a BOLAR que venían en la plantilla. El 6 de octubre de 2026 se revisaron el simulador y el recibo en navegador, incluyendo vistas de escritorio y móvil; no afirmamos equivalencia píxel a píxel con el original.

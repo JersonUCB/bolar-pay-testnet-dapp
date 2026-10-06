@@ -24,7 +24,7 @@ Las pruebas del adaptador usan una CLI inyectada ficticia. Las pruebas Rust ejec
 5. Simular depósito -> transferencia -> entrega. Debe mostrar 230 BOB **simulados** y una referencia DEMO, sin explorador blockchain.
 6. Cerrar y repetir con verificación pendiente: no debe aparecer depósito hasta aprobarla. Repetir con rechazo: no debe habilitar depósito.
 7. Repetir aprobado -> depósito -> devolución: no debe transferir ni entregar BOB.
-8. Probar límites de monto, teclado, cierre con Escape y retorno del foco. Revisar tamaños móvil y escritorio. No se completó esta revisión visual en el entorno inicial por bloqueo del puerto.
+8. Probar límites de monto, teclado, cierre con Escape y retorno del foco. Revisar tamaños móvil y escritorio. Revisión del 6 de octubre: los recorridos anteriores, el retorno del foco y las vistas 1440 × 900 y 390 × 844 fueron comprobados; no constituye cobertura de todos los navegadores.
 
 ## Prueba pública testnet
 
@@ -50,3 +50,11 @@ Si falla una petición, reintentar en el mismo modal. No cerrar y crear otra ope
 ## Estado inicial de verificación
 
 Compilación Next, WASM y pruebas aprobadas. `npm run dev` fue bloqueado con `listen EPERM` en el entorno de ejecución. Acceso de terminal a npm falló por DNS. Por tanto, instalación limpia, revisión visual y despliegue/transferencia en red siguen pendientes.
+
+## Verificación posterior: 6 de octubre de 2026
+
+Se completaron la instalación limpia y la revisión en navegador. Pasaron 12 pruebas web/servidor y 6 de contrato, lint, TypeScript, build Next y build WASM. La revisión encontró y corrigió el retorno del foco al cerrar el diálogo y un rechazo HTTP 403: Next reconstruía `request.url` con `localhost` mientras el navegador enviaba `Origin: http://127.0.0.1:3100`. Ahora se valida un `Host` local y la coincidencia exacta de su origen, manteniendo el bloqueo de dominios/puertos externos. Las solicitudes reales con identificador inválido, origen externo y parámetro extra de red dieron 400, 403 y 400 respectivamente.
+
+La interfaz confirmó 1 XLM testnet; el recibo, la transacción exitosa y el incremento exacto del destinatario se verificaron con datos públicos. La repetición del identificador se comprobó mediante simulación RPC (`--send no`), que devolvió el error 4 del contrato sin cambiar saldos ni secuencias. No se probó una pérdida real de respuesta de red; ese caso sigue cubierto por el adaptador ficticio de las pruebas automáticas.
+
+Consulta [la guía y evidencia](07-guia-practica-y-comparacion.md). Los límites operativos anteriores siguen aplicando.

@@ -2,7 +2,7 @@
 
 import dynamic from "next/dynamic";
 import { RemittanceDialog } from "@/components/remittance/remittance-dialog";
-import { useState, type FormEvent } from "react";
+import { useRef, useState, type FormEvent } from "react";
 import { convertAmount, DEMO_RATE_LABEL, parseAmount } from "@/lib/remittance-quote";
 import { Asset } from "./asset";
 import { InfoButton } from "./info-button";
@@ -48,6 +48,7 @@ export function RemittanceCalculator() {
   const [receive, setReceive] = useState("1150");
   const [error, setError] = useState("");
   const [flowOpen, setFlowOpen] = useState(false);
+  const trigger = useRef<HTMLButtonElement>(null);
   function update(value: string, side: "send" | "receive") {
     setError("");
     if (side === "send") { setSend(value); setReceive(convertAmount(value, side)); }
@@ -67,10 +68,10 @@ export function RemittanceCalculator() {
       <CurrencyField side="receive" value={receive} onChange={(value) => update(value, "receive")} />
       <MethodField label="Método de pago" value="Pix demo" id="payment-method" />
       <MethodField label="Método de Entrega" value="BOB demo" id="delivery-method" />
-      <button type="submit" className="primary-button mx-4 h-14">Probar envío 💸</button>
+      <button ref={trigger} type="submit" className="primary-button mx-4 h-14">Probar envío 💸</button>
       {error && <p id="quote-error" role="alert" className="px-4 text-sm text-red-700">{error}</p>}
     </form>
-    {flowOpen && <RemittanceDialog onClose={() => setFlowOpen(false)}>
+    {flowOpen && <RemittanceDialog onClose={() => setFlowOpen(false)} returnFocusRef={trigger}>
       <RemittanceFlow send={send} receive={receive} onClose={() => setFlowOpen(false)} />
     </RemittanceDialog>}
   </>;

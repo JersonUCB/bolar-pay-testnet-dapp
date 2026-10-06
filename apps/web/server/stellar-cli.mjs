@@ -35,8 +35,14 @@ export function receiptId(id) {
 
 export function assertLocalRequest(request) {
   const url = new URL(request.url);
-  if (!["127.0.0.1", "localhost", "[::1]"].includes(url.hostname)) throw new Error("El ejecutor testnet solo está disponible localmente.");
-  if (request.headers.get("origin") !== url.origin) throw new Error("Origen no permitido.");
+  const localHosts = ["127.0.0.1", "localhost", "[::1]"];
+  const host = request.headers.get("host");
+  if (url.protocol !== "http:" || !localHosts.includes(url.hostname) || !host) throw new Error("El ejecutor testnet solo está disponible localmente.");
+  // Next can reconstruct request.url with localhost even when the browser uses
+  // 127.0.0.1. Validate the actual Host, then require its exact browser Origin.
+  const browserUrl = new URL(`http://${host}`);
+  if (browserUrl.host !== host || !localHosts.includes(browserUrl.hostname) || browserUrl.port !== url.port) throw new Error("Host local no permitido.");
+  if (request.headers.get("origin") !== browserUrl.origin) throw new Error("Origen no permitido.");
   if (!request.headers.get("content-type")?.startsWith("application/json")) throw new Error("Se requiere JSON.");
 }
 

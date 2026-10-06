@@ -1,0 +1,47 @@
+{
+  "contractId": "CAQM2X5GTKUW5NLCUZHWARZOCSYNP3UUMKJNHH6XUAE6JZUMNANJUY7Q",
+  "reference": "8e26f398cf129aad34286de6f060383b9817f13b61ed1cc3f7e23738fc4c15d8",
+  "receipt": {
+    "amount": "10000000",
+    "ledger": 5060873,
+    "recipient": "GDXHXO5CNV355FAT4YV74GRQLTVTDSGLMIMETGCPGDIZ3RCPSOBJNYRU",
+    "sender": "GD7BUQKJPMVPY3H3GGP2BCWZ6Z3IWWFT2ULLYI24NQQJ2CREZT3OHM4X"
+  },
+  "before": {
+    "sender": {
+      "address": "GD7BUQKJPMVPY3H3GGP2BCWZ6Z3IWWFT2ULLYI24NQQJ2CREZT3OHM4X",
+      "balance": "9997.8984571",
+      "sequence": "21735364901208066"
+    },
+    "recipient": {
+      "address": "GDXHXO5CNV355FAT4YV74GRQLTVTDSGLMIMETGCPGDIZ3RCPSOBJNYRU",
+      "balance": "10000.0000000",
+      "sequence": "21735369196175360"
+    }
+  },
+  "after": {
+    "sender": {
+      "address": "GD7BUQKJPMVPY3H3GGP2BCWZ6Z3IWWFT2ULLYI24NQQJ2CREZT3OHM4X",
+      "balance": "9996.8783671",
+      "sequence": "21735364901208067"
+    },
+    "recipient": {
+      "address": "GDXHXO5CNV355FAT4YV74GRQLTVTDSGLMIMETGCPGDIZ3RCPSOBJNYRU",
+      "balance": "10001.0000000",
+      "sequence": "21735369196175360"
+    }
+  },
+  "duplicateSimulation": {
+    "rejected": true,
+    "contractError": 4,
+    "balancesAndSequencesUnchanged": true
+  },
+  "transactions": [
+    {
+      "hash": "455788d671a1a1c87eac26cf0a0ac3d61457a08f8b1e2601c5c141874bff0458",
+      "ledger": 5060873,
+      "successful": true,
+      "feeChargedStroops": "200900"
+    }
+  ]
+}

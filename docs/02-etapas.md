@@ -2,10 +2,10 @@
 
 | Etapa | Entrega | Estado y condición de cierre |
 |---|---|---|
-| 1. Base independiente | Git local, Next.js, assets y estructura Cargo | Implementada. Publicación GitHub pendiente. |
-| 2. Recorrido simulado | Identidad ficticia, estados, depósito, transferencia, entrega y devolución | Implementado; pruebas automáticas aprobadas. Falta revisión visual/manual. |
+| 1. Base independiente | Git local, Next.js, assets y estructura Cargo | Implementada y publicada en GitHub. Instalación limpia verificada. |
+| 2. Recorrido simulado | Identidad ficticia, estados, depósito, transferencia, entrega y devolución | Implementado y revisado en navegador: aprobación, pendiente, rechazo, devolución, límites y teclado. |
 | 3. Contrato Soroban | Autorización, transferencia atómica y recibo único | 6 pruebas aprobadas y WASM compilado. |
-| 4. Red testnet | Cuentas dedicadas, Friendbot, despliegue y adaptador local | Código implementado. Pendiente ejecutar con red y guardar evidencia del recibo. |
+| 4. Red testnet | Cuentas dedicadas, Friendbot, despliegue y adaptador local | Despliegue y transferencia de 1 XLM confirmados; saldos, recibo y rechazo de duplicado por simulación RPC registrados en la guía práctica. |
 | 5. Pollar testnet | Aplicación y credenciales exclusivas, login y wallet verificable | Pendiente; no se copió la configuración de producción. |
 | 6. Bridge sandbox | Probar esquemas y estados que permita su API | Pendiente acceso y confirmación con Oscar. Separado de Stellar testnet. |
 | 7. Piloto de remesa real | Remitente elegible, depósito, conciliación y pago al destinatario | Fuera de este laboratorio; requiere proveedores y operación confirmados. |
@@ -20,4 +20,6 @@ No presentar una demo con KYC simulado como un cliente verificado, una entrega B
 
 Crear una rama pequeña (`codex/<tema>`), formular un resultado observable, implementar una parte completa, revisar evidencia y registrar limitaciones. En el repositorio de producción continuamos las reglas del equipo; este laboratorio no implica un merge automático allí.
 
-Orden inmediato: revisar la web local -> ejecutar testnet -> confirmar capacidad de sandbox con Oscar -> integrar solo lo confirmado. Así el equipo aprende y avanza aunque el proveedor bancario tenga requisitos pendientes.
+Orden siguiente: repasar la evidencia y repetir el laboratorio -> confirmar Pollar testnet y capacidad de sandbox con Oscar -> integrar solo lo confirmado. Así el equipo aprende y avanza aunque el proveedor bancario tenga requisitos pendientes.
+
+Evidencia y comparación: [Guía práctica del 6 de octubre](07-guia-practica-y-comparacion.md).
